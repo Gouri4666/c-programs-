@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int n;
+do
+{
+	printf("\nEnter a number:");
+	scanf("%d",&n);
+	if(n>0)
+	{
+	if(n%2)
+		printf("Odd");
+	else
+		printf("Even");	
+	}
+	else
+	{
+	printf("\nEnter a positive number!");
+	}
+}
+while(n<=0);	
+	
+	return 0;
+}
