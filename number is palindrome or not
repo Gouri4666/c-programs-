@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<ctype.h>
+int main()
+{
+	int i,n,rev=0,rem;
+	printf("Enter a number:");
+	scanf("%d",&n);
+	int temp=n;
+	while(n)	
+	{
+		rem=n%10;
+		n/=10;
+		rev=rev*10+rem;
+	}
+	printf("\nReverse=%d",rev);
+	if(temp==rev)
+	printf("\n%d is palindrome",rev);
+	else
+	printf("\n%d is not palindrome",rev);
+
+	return 0;
+}
