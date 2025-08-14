@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+//Reverse a string using pointer
+
+int main() 
+{
+	int a[50],i,n;
+	int *p,largest;
+	p=a;
+	printf("Enter n:");
+	scanf("%d",&n);
+	for(p=a;p<a+n;p++)
+	{
+		printf("Enter element:");
+		scanf("%d",p);
+	}
+	largest=a[0];
+	for(p=a;p<a+n;p++)
+	{
+	if(*p>largest)
+		largest=*p;
+	}
+	printf("Largest=%d",largest);
+	return 0;
+}
