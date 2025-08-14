@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+//Reverse a string using pointer
+
+int main() 
+{
+	int n,i,a[50],sum=0;
+	int *p;
+	p=a;
+	printf("Enter n:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+	printf("Enter elemenet %d:",(i+1));
+	scanf("%d",p+i);
+	}
+	printf("\nEntered Array:");
+	for(i=0;i<n;i++)
+	printf("%d ",*(p+i));
+	//sum
+	for(i=0;i<n;i++)
+	sum+=*(p+i);
+	printf("\nSum=%d",sum);
+	return 0;
+}
