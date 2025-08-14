@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+//Reverse a string using pointer
+
+int main() 
+{
+	char str[50],temp;
+	char *start,*end;
+	
+	printf("Enter a string:");
+	scanf("%s",str);
+	start=str;
+	end=str+strlen(str)-1;
+	while(start<end)
+	{
+		temp=*start;
+		*start=*end;
+		*end=temp;
+		start++;
+		end--;
+	}
+	printf("Afrer Swap:%s",str);
+	return 0;
+}
