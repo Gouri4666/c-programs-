@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h> 
+//vovels and consonent
+int main() 
+{
+	char arr[100],*p;
+	int vow=0,cons=0,len=0;
+	p=arr;
+	printf("Enter String:");
+	scanf("%s",p);
+	while(*p!='\0')
+	{
+	len++;
+	p++;
+	}
+	printf("\nLength=%d",len);
+	p=arr;
+	for(p=arr;p<arr+len;p++)
+	{
+	char ch=tolower(*p);
+	if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+	vow++;
+	else
+	cons++;
+	}
+	printf("\nVowels=%d",vow);
+	printf("\nConsonent=%d",cons);
+	return 0;
+}
