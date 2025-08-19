@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+int main()
+{
+	struct node *start,*ptr;
+	int n,i=0,item;
+	printf("Enter n:");
+	scanf("%d",&n);
+	printf("Enter elements:\n");
+	start=ptr=(struct node*)malloc(sizeof(struct node*));
+	printf("Enter element %d:",i+1);
+	scanf("%d",&start->data);
+	for(i=0;i<n-1;i++)
+	{
+	printf("Enter element %d:",i+2);
+	ptr=ptr->next=(struct node*)malloc(sizeof(struct node*));
+	scanf("%d",&ptr->data);
+	}
+	ptr->next=NULL;
+
+	//print list
+
+	if(start!=NULL)
+	{
+	printf("Linked list elements are: ");
+	ptr=start;
+	while(ptr!=NULL)
+	{
+	printf("%d ",ptr->data);
+	ptr=ptr->next;
+	}
+	}
+
+	//insert
+	printf("\nEnter item to insert: ");
+	ptr=(struct node*)malloc(sizeof(struct node*));
+	scanf("%d",&ptr->data);
+	ptr->next=start;
+	start=ptr;
+	//display
+	if(start!=NULL)
+	{	
+	printf("Elements after insertion:");
+	
+	ptr=start;
+	while(ptr!=NULL)
+	{
+	printf("%d ",ptr->data);
+	ptr=ptr->next;
+	}
+	}
+	return 0;
+}
