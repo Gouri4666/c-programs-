@@ -1,0 +1,139 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node *start=NULL,*ptr,*newnode;
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+void createlist()
+{
+	int n,i;
+	printf("Enter number of nodes:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		newnode=(struct node*)malloc(sizeof(struct node*));
+		printf("Enter element %d: ",i+1);
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(start==NULL)
+		{
+			start=ptr=newnode;
+		}
+		else
+		{
+			ptr->next=newnode;
+			ptr=newnode;
+		}
+	}
+	printf("Linked list: ");
+	ptr=start;
+	if(start==NULL)
+	printf("Empty");
+	else
+	{
+	while(ptr!=NULL)
+	{
+	printf("%d ",ptr->data);
+	ptr=ptr->next;
+	}
+	}
+}
+void display()
+{
+//display
+	ptr=start;
+	while(ptr!=NULL)
+	{
+		printf("%d ",ptr->data);
+		ptr=ptr->next;
+	}
+}
+void beginning()
+{
+	newnode=(struct node*)malloc(sizeof(struct node*));
+	printf("\nEnter element to insert:");
+	scanf("%d",&newnode->data);
+	newnode->next=start;
+	start=newnode;
+	display();
+
+}
+void end()
+{
+	newnode=(struct node*)malloc(sizeof(struct node*));
+	printf("\nEnter element to insert:");
+	scanf("%d",&newnode->data);
+	newnode->next=NULL;
+	ptr=start;
+	while(ptr->next!=NULL)
+	ptr=ptr->next;
+	ptr->next=newnode;
+	ptr=start;
+	display();
+}
+
+//insert in position
+void position()
+{
+	int pos;
+	newnode=(struct node*)malloc(sizeof(struct node*));
+			printf("Enter element to insert:");
+			scanf("%d",&newnode->data);
+			newnode->next=NULL;
+	printf("Enter position:");
+	scanf("%d",&pos);
+	if(pos)
+	{
+		if(pos==1)
+		{//insert at beginning
+				newnode->next=start;
+				start=newnode;
+				display();
+		}
+		else if(pos>1)
+		{
+			ptr=start;
+			//pos =5 for(int i=1;i<=3)
+			for(int i=1;i<=pos-2 && ptr!=NULL;i++)
+			ptr=ptr->next;
+			newnode->next=ptr->next;
+			ptr->next=newnode;
+			display();
+		}
+		else if(ptr==NULL)
+		printf("position out of range");
+		
+	}
+}
+int main()
+{
+	int cont;
+	createlist();
+	do
+	{
+		printf("\tMenu\n\t1.Insert at beginning\n\t2.Insert at end\n\t3.Insert at a certain position\n");
+	printf("Enter your choice:");
+	int choice;
+	scanf("%d",&choice);
+	switch(choice)
+	{
+		case 1:beginning();
+			break;
+		case 2:end();
+			break;
+		case 3:position();
+			break;
+		default:printf("Invalid choice!");
+	}
+	printf("\nContinue or exit(1/0): ");
+	scanf("%d",&cont);
+	}
+	while(cont==1);
+
+	
+	
+	return 0;
+}
