@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node *start=NULL,*ptr,*prev,*newnode;
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+void createlist()
+{
+	int n,i;
+	printf("Enter number of nodes:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		newnode=(struct node*)malloc(sizeof(struct node*));
+		printf("Enter element %d: ",i+1);
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(start==NULL)
+		{
+			start=ptr=newnode;
+		}
+		else
+		{
+			ptr->next=newnode;
+			ptr=newnode;
+		}
+	}
+	printf("Linked list: ");
+	ptr=start;
+	if(start==NULL)
+	printf("Empty");
+	}
+void display()
+{
+//display
+	if(start==NULL)
+	printf("Empty!");
+	else
+	{
+	ptr=start;
+	while(ptr!=NULL)
+	{
+		printf("%d ",ptr->data);
+		ptr=ptr->next;
+	}
+	}
+}
+void delete()
+{
+	int pos,i;
+	printf("\nEnter position:");
+	scanf("%d",&pos);
+	prev=start;
+	ptr=start;
+	for(i=1;i<=pos-2;i++)
+	prev=prev->next;
+	for(i=1;i<=pos;i++)
+	ptr=ptr->next;
+	prev->next=ptr;
+	display();
+}
+int main()
+{
+	createlist();
+	display();
+	delete();
+	
+	return 0;
+}
