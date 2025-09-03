@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<string.h>
+#define N 25
+int q[N];
+int r=-1;
+int f=-1;
+void enqueue()
+{
+	int item;
+	if(f==(r+1)%N)
+	printf("Overflow!");
+	else
+	{
+	printf("Enter item to insert: ");
+	scanf("%d",&item);
+	if(f==-1)
+	f=0;
+	r=(r+1)%N;
+	q[r]=item;
+	printf("Item %d inserted",q[r]);
+	}
+
+}
+void dequeue()
+{
+	int item;
+	if(f==-1)
+	printf("Underflow!");
+	else
+	{
+	item=q[f];
+	if(f==r)
+	f=r=-1;
+	else
+	f=(f+1)%N;
+	printf("Item %d deleted",item);
+	}
+}
+void display()
+{
+	int i;
+	if(f==-1 )
+	printf("Underflow!");
+	else
+	{
+	printf("Queue elements are:");
+	for(i=f;i<=r;i++)
+	printf("%d ",q[i]);
+	}
+}
+
+int main()
+{
+	int ch,cont;
+	do
+	{
+		printf("\n\tMENU\n\t1.Enqueue\n\t2.Dequeue\n\t3.Display\n");
+	printf("Enter your choice: ");
+	scanf("%d",&ch);
+	switch(ch)
+	{
+		case 1:enqueue();
+			break;
+		case 2:dequeue();
+			break;
+		case 3:display();
+			break;
+		default:printf("Invalid chouce!");
+	}
+	printf("\nContinue orExit(1/0): ");
+	scanf("%d",&cont);
+	}
+	while(cont==1);	
+	return 0;
+}
