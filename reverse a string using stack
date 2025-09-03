@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+#define N 25
+char stack[N];
+int top=-1;
+int main()
+{
+	char str[100];
+	int i;
+	printf("Enter string: ");
+	scanf("%s",str);
+	if(top==N-1)
+	printf("Overflow!");
+	else
+	{
+	for(i=0;i<strlen(str);i++)
+	stack[++top]=str[i];
+	}
+	for(i=top;i>=0;i--)
+	printf("%c",stack[top--]);
+	return 0;
+}
